@@ -1,4 +1,4 @@
-import { Client, Events, GatewayIntentBits } from 'discord.js';
+import { ActivityType, Client, Events, GatewayIntentBits } from 'discord.js';
 
 const client = new Client({ intents: Object.values(GatewayIntentBits) });
 
@@ -15,6 +15,12 @@ function getOmikuji() {
 client
   .on(Events.ClientReady, () => {
     console.log(`Logged in as ${client.user.tag}`);
+
+    client.user.setPresence({
+      status: 'online',
+      afk: false,
+      activities: [{ name: 'おみくじ', type: ActivityType.Playing }]
+    });
   })
   .on(Events.MessageCreate, message => {
     if (message.author.bot || message.author.system) return;
