@@ -17,7 +17,7 @@ client
     console.log(`Logged in as ${client.user.tag}`);
 
     client.user.setPresence({
-      status: 'online',
+      status: 'idle',
       afk: false,
       activities: [{ name: 'おみくじ', type: ActivityType.Playing }]
     });
